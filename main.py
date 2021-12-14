@@ -28,7 +28,7 @@ def get_random_string(length):
 # Creates new tor circuit / new ip
 def renew_connection():
     with Controller.from_port(port = 9051) as controller:
-        controller.authenticate(password="password")
+        controller.authenticate(password=password)
         controller.signal(Signal.NEWNYM)
 
 # Creates a session which is used to make https / http requests
@@ -84,6 +84,8 @@ def loop(length):
 
     # Repeat when done
     loop(length)
+
+password = input('Enter password for Tor: ')
 
 try:
     thread_count = int(input('Enter amount of threads to use: '))
